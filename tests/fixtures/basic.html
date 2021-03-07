@@ -1,0 +1,999 @@
+
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"867f62d6b7",applicationID:"407372161"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(6),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(y,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1198.min.js"},h=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:w,features:{},xhrWrappable:h,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var x=0},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(7),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<base href="http://jalgpall.ee/voistlused/" />
+ <!--[if lt IE 9]><script src="scripts/externals/html5.js"></script><![endif]-->
+ <!--[if lt IE 9]><script src="scripts/externals/ie9.js"></script><![endif]-->
+<title>Mängu protokoll</title>
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1" />
+<meta name="description" content="" />
+<meta property="og:title" content="Mängu protokoll" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://jalgpall.ee/voistlused/protocol" />
+<meta property="og:determiner" content="auto" />
+<link type="text/css" rel="stylesheet" lang="en" href="../style/reset.css" />
+<link type="text/css" rel="stylesheet" lang="en" href="../style/style.css" />
+<link type="text/css" rel="stylesheet" lang="en" href="https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900" />
+<link type="text/css" rel="stylesheet" lang="en" href="../style/jquery-ui-1-11-4/core.css" />
+<link type="text/css" rel="stylesheet" lang="en" href="../style/select2.min.css" />
+<link type="text/css" rel="stylesheet" lang="en" href="../style/footable.standalone.min.css" />
+<link type="text/css" rel="stylesheet" lang="en" href="../style/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet" lang="en" href="../style/mediaelement/mediaelementplayer.css" />
+<link type="text/css" rel="icon" lang="en" href="/images/favicon.ico" />
+<script type="text/javascript">var _gaq=[["_setAccount","UA-1099693-2"],["_setDomainName","jalgpall.ee"],["_addOrganic","neti.ee","query"],["_addOrganic","www.ee","query"],["_addOrganic","delfi.ee","q"],["_addOrganic","yahoo.com","q"],["_addOrganic","bing.com","q"],["_addOrganic","google.com","q"],["_addOrganic","google.ee","q"],["_addOrganic","google.lv","q"],["_addOrganic","google.lt","q"],["_addOrganic","google.fi","q"],["_addOrganic","google.se","q"],["_addOrganic","google.ru","q"],["_addOrganic","msn.com","q"],["_addOrganic","lycos.com","query"],["_addOrganic","altavista.com","q"],["_addOrganic","yandex.com","text"],["_addOrganic","rambler.ru","text"],["_trackPageview"]];(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script>
+<meta property="og:image" content="http://jalgpall.ee/ejl/content/editor/images/EJL_logo_varviliuga_72dpi.png" /></head>
+<body>
+ <div id="wrap">
+            <div id="sidebar">
+    <nav id="mainmenu">
+        <button class="menu-toggle"><span></span> </button>
+        <div class="slide">
+            <ul>
+                <li class="active"><a href="/">Avaleht</a></li>
+                                    <li class="children"><a href="#">Koondised</a>
+                        <ul>
+                                                            <li><a href="/koondis/1/uudised">Mehed A-koondis</a></li>
+                                                            <li><a href="/koondis/17/uudised">U23</a></li>
+                                                            <li><a href="/koondis/2/uudised">U21</a></li>
+                                                            <li><a href="/koondis/3/uudised">U19</a></li>
+                                                            <li><a href="/koondis/4/uudised">U18</a></li>
+                                                            <li><a href="/koondis/5/uudised">U17</a></li>
+                                                            <li><a href="/koondis/6/uudised">U16</a></li>
+                                                            <li><a href="/koondis/16/uudised">U15</a></li>
+                                                            <li><a href="/koondis/7/uudised">Naised A-koondis</a></li>
+                                                            <li><a href="/koondis/8/uudised">Naised U19</a></li>
+                                                            <li><a href="/koondis/10/uudised">Naised U17</a></li>
+                                                            <li><a href="/koondis/9/uudised">Naised U15</a></li>
+                                                            <li><a href="/koondis/14/uudised">Saal</a></li>
+                                                            <li><a href="/koondis/18/uudised">Saal U19</a></li>
+                                                            <li><a href="/koondis/15/uudised">Rand</a></li>
+                                                    </ul>
+                    </li>
+                                                    <li class="children"><a href="#">Võistlused</a>
+                        <ul>
+                                                            <li >
+                                    <a href="/voistlused/52/premium-liiga">Premium liiga</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/53/esiliiga">Esiliiga</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/186/esiliiga-b">Esiliiga B</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/madalamad-liigad/1/II.E/N">Madalamad liigad</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/naised/63/naiste-meistriliiga">Naised</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/noored/406/u-19-eliitliiga">Noored</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/karikavoistlused/137/tipneri-karikavoistlused">Karikavõistlused</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/125/saalijalgpall">Saalijalgpall</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/rannajalgpall/196/rannajalgpalli-meistriliiga">Rannajalgpall</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/taliturniir">Taliturniir</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/soprusmangud">Sõprusmängud</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/eesti-maavoistlused">Eesti maavõistlused</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/aastaloputurniir">Aastalõputurniir</a>
+                                </li>
+                                                            <li >
+                                    <a href="/voistlused/tv">Otseülekanded</a>
+                                </li>
+                                                    </ul>
+                    </li>
+                                                    <li class="children"><a href="#">Rahvajalgpall</a>
+                        <ul>
+                                                            <li >
+                                    <a href="/rahvajalgpall/">Rahvajalgpall</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/rahvaliiga">Rahvaliigad</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/suvelaagrid">Suvelaagrid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/kooliprojekt">Kooliprojekt</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/5-vs-5">5 vs 5 turniirid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/tudrukute-festival">Tüdrukute festivalid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/seeniorid">Seeniorid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/emade-turniir">Emade turniir</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/rahvustekarikas">Rahvustekarikas</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/eesti-soome-100">Eesti-Soome 100+</a>
+                                </li>
+                                                            <li >
+                                    <a href="/rahvajalgpall/playgreen">PlayGreen</a>
+                                </li>
+                                                    </ul>
+                    </li>
+                                                    <li class="children"><a href="#">Jalgpalli Liit</a>
+                        <ul>
+                                                            <li >
+                                    <a href="/ejl/">Avaleht</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/kontakt">Kontakt</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/struktuur">Struktuur</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/a-le-coq-arena">A. Le Coq Arena</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/sumbolid">Sümbolid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/teenetemargid">Teenetemärgid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/staadionid">Staadionid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/dokumendid">Dokumendid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/distsiplinaar">Distsiplinaardokumendid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/litsentseerimine">Litsentseerimine</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/jalgpalluri-litsents">Jalgpalluri litsents</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/ametiisikute-litsents">Ametiisikute litsents</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/treener">Treenerid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/kohtunikud">Kohtunikud</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/vahendajad">Vahendajad</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/konkursid">Konkursid</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/uue-voistkonna-registreerimine">Uue võistkonna registreerimine</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/terviseuuringud">Terviseuuringud</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/tahtede-klubi">Coolbet Tähtede Klubi</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/aus-mang">Aus mäng</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/jalka">JALKA</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/jalgpalliakadeemia">Jalgpalliakadeemia</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/tingimused-ja-pohimotted">Tingimused ja põhimõtted</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/liitu-uudiskirjaga">Liitu uudiskirjaga!</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/palli-ja-maskotilapsed">Palli- ja maskotilapsed</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/tv">Otseülekanded</a>
+                                </li>
+                                                            <li >
+                                    <a href="/ejl/vabatahtlikud">Vabatahtlikud</a>
+                                </li>
+                                                    </ul>
+                    </li>
+                            </ul>
+        </div>
+    </nav>
+    <div class="search" id="search">
+        <a class="button search-toggle" href="/otsing/siteacc=cms">Otsing</a>
+        <div class="input">
+            <form action="/otsing/siteacc=cms">
+                <input type="search" name="keyword" placeholder="Otsing...">
+            </form>
+        </div>
+    </div>
+    <div class="calendarpanel" id="calendarpanel">
+        <a class="button calendar-toggle" href="#">
+            <span class="date">
+                07
+                <small>Märts</small>
+            </span>
+            Kalender
+        </a>
+        <div class="slide">
+                            <div class="datepicker-widget blue">
+    <div class="datepicker" data-calendarurl="/voistlused/calendar" ></div>
+</div>
+                    </div>
+    </div>
+
+    <div class="tvpanel" id="tvpanel">
+        <a class="button tv-toggle" href="/tv">Otse</a>
+            </div>
+
+    <div class="userpanel" id="userpanel">
+        <a class="button user-toggle" href="/eris" target="_blank">ERIS</a>
+            </div>
+
+    <div class="cartpanel" id="cartpanel">
+        <a class="button cart-toggle" href="/e-pood" target="_blank">Fännitooted</a>
+            </div>
+        <div id="langbar">
+            </div>
+    <div class="socials">
+        <ul>
+                    <li>
+                <a href="/facebook" class="fb" ></a>
+            </li>
+                    <li>
+                <a href="/instagram" class="insta" ></a>
+            </li>
+                </ul>
+    </div>
+    <div class="print">
+        <button class="button btn-print" onClick="window.print();return false"></button>
+    </div>
+</div>
+            <div id="container">
+                <header id="header">
+    <div class="top" >
+        <a href="/" id="logo">
+                       <img src="../images/base/logo.png" alt="">
+                    </a>
+                    <nav id="headernav">
+                <button class="button mobile-toggle">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </button>
+                <ul>
+                                            <li >
+                            <a href="/voistlused/52/premium-liiga">Premium liiga</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/53/esiliiga">Esiliiga</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/186/esiliiga-b">Esiliiga B</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/madalamad-liigad/1/II.E/N">Madalamad liigad</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/naised/63/naiste-meistriliiga">Naised</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/noored/406/u-19-eliitliiga">Noored</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/karikavoistlused/137/tipneri-karikavoistlused">Karikavõistlused</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/125/saalijalgpall">Saalijalgpall</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/rannajalgpall/196/rannajalgpalli-meistriliiga">Rannajalgpall</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/taliturniir">Taliturniir</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/soprusmangud">Sõprusmängud</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/eesti-maavoistlused">Eesti maavõistlused</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/aastaloputurniir">Aastalõputurniir</a>
+                        </li>
+                                            <li >
+                            <a href="/voistlused/tv">Otseülekanded</a>
+                        </li>
+                                    </ul>
+            </nav>
+            </div>
+</header>
+                <div id="content">
+                    <div id="main" role="main">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div id="page" class="event-detail">
+    <div class="row full-l">
+        <div class="col-75">
+                <div class="head">
+                    <div class="teams">
+                        <div class="team">
+                            <div class="flag">
+                                                                            <img style="max-height: 60px" src="https://jalgpall.ee/images/clubs/07FA3EFF7DBAE685C3EDB47CFDD0BDB3" alt="RL. Home team">
+                                                                </div>
+                            <p>
+                                                                    <a href="/rahvajalgpall/team/5678">
+                                        RL. Home team
+                                    </a>
+                                                            </p>
+                        </div>
+                        <div class="spacer multi">
+                                                                                                                                        <p class="p-sm">
+                                            1 - 0
+                                            <small>Vaheajaseis</small>
+                                        </p>
+
+                                    <p class="p-md">
+                                        2 - 0
+                                                                                    <small>Lõppseis</small>
+                                                                            </p>
+
+                                                                                                                        </div>
+                        <div class="team">
+                            <div class="flag">
+                                                                            <img style="max-height: 60px" src="/images/base/no-logo.png" alt="RL. Away team">
+
+                            </div>
+                            <p>
+                                                                    <a href="/rahvajalgpall/team/1234">
+                                        RL. Away team
+                                    </a>
+                                                            </p>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <ul>
+                                                            <li class="type">
+                                                                            <a href="/voistlused/123/liigad">B-tasand V</a>
+                                                                    </li>
+                                                                <li>
+
+                                        5. voor
+                                                                                                          </li>
+                            <li class="date ico"><a href="/voistlused/calendar?date=10.07.2020">10.07.2020</a> kell 20:30</li>
+                            <li class="location ico"><a href="/ejl/staadionid/71">Venue name</a></li>
+                                                            <li class="group ico">Pealtvaatajaid 29</li>
+                                                    </ul>
+                                            </div>
+                    <div class="actions">
+                        <a href="/voistlused/match_info/120233" class="button ico-btn info"></a>
+                                                                    </div>
+                </div>
+                                                    <div class="block block-01 center">
+                        <div class="head">
+                            <p>Väravad</p>
+                        </div>
+                        <div class="goals-list">
+                                                                                                                    <div class="goal-single">
+
+
+                                    <div class="player">
+
+
+                                            <span class="time">7′</span>
+                                                                                            Bagrat Garth
+                                                                                        <div class="status">
+                                                                                            </div>
+                                                                            </div>
+                                    <div class="score">
+                                        1 - 0
+                                    </div>
+
+                                                                                    <div class="player empty">
+                                                                            </div>
+                                </div>
+                                                            <div class="goal-single">
+
+
+                                    <div class="player">
+
+
+                                            <span class="time">70′</span>
+                                                                                            Demeter Najm
+                                                                                        <div class="status">
+                                                                                            </div>
+                                                                            </div>
+                                    <div class="score">
+                                        2 - 0
+                                    </div>
+
+                                                                                    <div class="player empty">
+                                                                            </div>
+                                </div>
+                                                    </div>
+                    </div>
+
+                                    <div class="block block-01 center">
+                        <div class="head">
+                            <p>Põhikoosseis</p>
+                        </div>
+                        <div class="list list-02 lineup clearfix">
+                            <ul class="left">
+                                <li class="title"><a href="/voistlused/123/team/5678">RL. Home team</a></li>
+                                                                        <li><span class="count">32.</span>
+                                                                                <p>
+                                                                                            Chi Shulammite
+                                                                                                                                                                                    <small class="strong">(VV)</small>
+                                                                                                                                        <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">3.</span>
+                                                                                <p>
+                                                                                            Demetrios Willoughby
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">6.</span>
+                                                                                <p>
+                                                                                            Gwenaël Saoul
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">8.</span>
+                                                                                <p>
+                                                                                            Pankaj Kris
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">13.</span>
+                                                                                <p>
+                                                                                            Ramsay Erebos
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">19.</span>
+                                                                                <p>
+                                                                                            Zhivko Sebastian
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">21.</span>
+                                                                                <p>
+                                                                                            Notah Hans
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">22.</span>
+                                                                                <p>
+                                                                                            Heimir Blagoje
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">24.</span>
+                                                                                <p>
+                                                                                            Dax Octavian
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">25.</span>
+                                                                                <p>
+                                                                                            Voldemārs Rok
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">27.</span>
+                                                                                    <div class="status">
+                                                                                                                                                                                                                                                                                                                        <span class="football"></span>
+                                                                                                                                                                                                                                                                                                                                                                            <span class="card yellow" title="Rahulolematuse näitamine sõnas või teos"></span>                                                                                                                                                </div>
+                                                                                <p>
+                                                                                            Bagrat Garth
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">28.</span>
+                                                                                    <div class="status">
+                                                                                                                                                                                                                                                                                                                        <span class="card yellow" title="Ebasportlik käitumine - lubava rünnaku peatamine"></span>                                                                                                                                                </div>
+                                                                                <p>
+                                                                                            Hariwald Rafaël
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">31.</span>
+                                                                                    <div class="status">
+                                                                                                                                                                                                                                                                                                                        <span class="card yellow" title="Ebasportlik käitumine - ilmse väravavõimaluse ärahoidmine üritusega palli mängida"></span>                                                                                                                                                </div>
+                                                                                <p>
+                                                                                            Onesimos Shantanu
+                                                                                                                                        <small class="strong">(K)</small>
+                                                                                                                                                                                    <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">34.</span>
+                                                                                    <div class="status">
+                                                                                                                                                                                                                                                                                                                        <span class="football"></span>
+                                                                                                                                                </div>
+                                                                                <p>
+                                                                                            Demeter Najm
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">35.</span>
+                                                                                <p>
+                                                                                            Toni Efraim
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">92.</span>
+                                                                                <p>
+                                                                                            Thiemo Vlastimir
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                                                    <li class="spacer"></li>
+                                                                            <li class="large">
+                                          Treener: Fridenot Yahui                                       </li>
+                                                                                                                                    </ul>
+                            <ul class="right">
+                                <li class="title"><a href="/voistlused/123/team/1234">RL. Away team</a></li>
+                                                                        <li><span class="count">1.</span>
+                                                                                <p>
+                                                                                            Marián Borivoje
+                                                                                                                                                                                    <small class="strong">(VV)</small>
+                                                                                                                                        <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">3.</span>
+                                                                                <p>
+                                                                                            Osmund Hardwin
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">5.</span>
+                                                                                <p>
+                                                                                            Culhwch Naranbaatar
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">7.</span>
+                                                                                <p>
+                                                                                            Shakti Chaza'el
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">8.</span>
+                                                                                <p>
+                                                                                            Hesiodos Lovrenco
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">9.</span>
+                                                                                <p>
+                                                                                            Kristo Flanagan
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">10.</span>
+                                                                                <p>
+                                                                                            Klim Freyr
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">11.</span>
+                                                                                    <div class="status">
+                                                                                                                                                                                                                                                                                                                        <span class="card yellow" title="Ebasportlik käitumine - lubava rünnaku peatamine"></span>                                                                                                                                                </div>
+                                                                                <p>
+                                                                                            Radoslav Artur
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">18.</span>
+                                                                                <p>
+                                                                                            Zachary Sumeet
+                                                                                                                                        <small class="strong">(K)</small>
+                                                                                                                                                                                    <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">26.</span>
+                                                                                <p>
+                                                                                            Fedlimid Abhishek
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">38.</span>
+                                                                                <p>
+                                                                                            Abel Finnur
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+                                                                    <li><span class="count">69.</span>
+                                                                                <p>
+                                                                                            Jēkabs Jae
+                                                                                                                                                                                                                                <small>
+                                                                                                    </small>
+                                                                                    </p>
+                                    </li>
+
+
+                                                            </ul>
+                        </div>
+                    </div>
+                                                        <div class="block block-01 center">
+                                    <div class="head">
+                        <p>Mängu sündmused</p>
+                    </div>
+                    <div class="list list-02 timeline clearfix">
+                        <ul>
+
+
+                                <li>
+                                    <div class="order col">7′</div>
+                                    <div class="col status">
+                                                                                                                                                                                                                            <span class="football football">1 - 0</span>
+                                                                            </div>
+                                    <div class="col player">
+                                        <p>
+                                            <span>27</span>                                                                                            Bagrat Garth
+                                                                                                                                </p>
+
+                                    </div>
+
+                                    <div class="col country">RL. Home team</div>
+                                </li>
+
+
+                                <li>
+                                    <div class="order col">18′</div>
+                                    <div class="col status">
+                                                                                    <span class="card yellow" title="Ebasportlik käitumine - lubava rünnaku peatamine"></span>                                                                            </div>
+                                    <div class="col player">
+                                        <p>
+                                            <span>28</span>                                                                                            Hariwald Rafaël
+                                                                                                                                </p>
+
+                                    </div>
+
+                                    <div class="col country">RL. Home team</div>
+                                </li>
+
+
+                                <li>
+                                    <div class="order col">34′</div>
+                                    <div class="col status">
+                                                                                    <span class="card yellow" title="Ebasportlik käitumine - ilmse väravavõimaluse ärahoidmine üritusega palli mängida"></span>                                                                            </div>
+                                    <div class="col player">
+                                        <p>
+                                            <span>31</span>                                                                                            Onesimos Shantanu
+                                                                                                                                </p>
+
+                                    </div>
+
+                                    <div class="col country">RL. Home team</div>
+                                </li>
+
+
+                                <li>
+                                    <div class="order col">70′</div>
+                                    <div class="col status">
+                                                                                                                                                                                                                            <span class="football football">2 - 0</span>
+                                                                            </div>
+                                    <div class="col player">
+                                        <p>
+                                            <span>34</span>                                                                                            Demeter Najm
+                                                                                                                                </p>
+
+                                    </div>
+
+                                    <div class="col country">RL. Home team</div>
+                                </li>
+
+
+                                <li>
+                                    <div class="order col">70+1′</div>
+                                    <div class="col status">
+                                                                                    <span class="card yellow" title="Ebasportlik käitumine - lubava rünnaku peatamine"></span>                                                                            </div>
+                                    <div class="col player">
+                                        <p>
+                                            <span>11</span>                                                                                            Radoslav Artur
+                                                                                                                                </p>
+
+                                    </div>
+
+                                    <div class="col country">RL. Away team</div>
+                                </li>
+
+
+                                <li>
+                                    <div class="order col">70+1′</div>
+                                    <div class="col status">
+                                                                                    <span class="card yellow" title="Rahulolematuse näitamine sõnas või teos"></span>                                                                            </div>
+                                    <div class="col player">
+                                        <p>
+                                            <span>27</span>                                                                                            Bagrat Garth
+                                                                                                                                </p>
+
+                                    </div>
+
+                                    <div class="col country">RL. Home team</div>
+                                </li>
+                                                    </ul>
+                    </div>
+                                <div class="soccer-legend">
+                    <ul>
+                        <li class="card yellow">
+                            Kollane kaart
+                        </li>
+                        <li class="card red">
+                            Punane kaart
+                        </li>
+                        <li class="switch">
+                            Vahetus
+                        </li>
+                        <li class="goal">
+                            Värav
+                        </li>
+                        <li class="goal red">
+                            Omavärav
+                        </li>
+                        <li class="penalty">
+                            Penalti
+                        </li>
+                        <li class="penalty red">
+                            Realiseerimata penalti
+                        </li>
+                        <li class="saved-penalty">
+                            Tõrjutud penalti
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                                <div class="block block-01 center small col-50">
+                    <div class="head">
+                        <p>Keskmine vanus</p>
+                    </div>
+                    <div class="list list-01 clearfix">
+                        <ul class="left">
+                            <li>RL. Home team</li>
+                            <li>
+                                                                                                                                25 a. 11 k.
+                            </li>
+                        </ul>
+                        <ul class="right">
+                            <li>RL. Away team</li>
+                            <li>
+                                                                                                                                32 a. 6 k.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-25">
+
+                <div class="block block-01 info vertical center">
+                    <ul>
+                                                    <li class="main">
+                                <p class="title">
+                                                                            Kohtunik
+                                                                    </p>
+                                <p class="value">
+                                    Prashant Leopold
+                                                                    </p>
+                            </li>
+                                                <li>
+                                                                                                            </li>
+                        <li>
+                                                                                </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+</div>
+                        <div class="social-blocks">
+                            <ul>
+                                                                    <li>
+    <div class="fb-widget">
+        <div class="fb-page" data-href="https://www.facebook.com/jalgpalleestis" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <div class="fb-xfbml-parse-ignore">
+                <blockquote cite="https://www.facebook.com/jalgpalleestis"><a href="https://www.facebook.com/jalgpalleestis"></a></blockquote>
+            </div>
+        </div>
+    </div>
+</li>
+                                                                                                    <li>
+    <div class="twitter-widget">
+        <p class="tweet">Eesti koondis saadab põhjanaabrid EM-finaalturniirile
+<a target="_blank" href="https://t.co/hQqhJWwWcl">https://t.co/hQqhJWwWcl</a> #eestikoondis #südamajepalliga https://t.co/8h5rZuEFgC</p>
+        <div class="bottom">
+            <p class="time">10:02 02.03.21</p>
+            <a target="_blank" href="https://twitter.com/eestijalgpall" class="user">@eestijalgpall</a>
+        </div>
+    </div>
+</li>
+                                                                                            </ul>
+                        </div>
+                        <div class="sponsors">
+        <div class="row">
+                        <div class="list">
+            <p class="title">Peatoetaja</p>
+            <ul>
+                                <li>
+                    <a href="/esimene-rida/peasponsor/lhv"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/166.png" alt="LHV"></a>
+                </li>
+                            </ul>
+        </div>
+                                <div class="list">
+            <p class="title">Suurtoetajad</p>
+            <ul>
+                                <li>
+                    <a href="/esimene-rida/suurtoetajad/nike"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/167.png" alt="Nike"></a>
+                </li>
+                                <li>
+                    <a href="/esimene-rida/suurtoetajad/a-le-coq"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/168.png" alt="A.Le Coq"></a>
+                </li>
+                                <li>
+                    <a href="/esimene-rida/suurtoetajad/coolbet"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/03/43/34376.png" alt="Coolbet"></a>
+                </li>
+                                <li>
+                    <a href="/esimene-rida/suurtoetajad/rimi"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/188.png" alt="Rimi"></a>
+                </li>
+                            </ul>
+        </div>
+                    </div>
+        <div class="row">
+                        <div class="list">
+            <p class="title">Toetajad</p>
+            <ul>
+                                <li>
+                    <a href="/teine-rida/toetajad/abc-motors"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/173.png" alt="ABC Motors"></a>
+                </li>
+                                <li>
+                    <a href="/teine-rida/toetajad/ramirent"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/172.png" alt="Ramirent"></a>
+                </li>
+                                <li>
+                    <a href="/teine-rida/toetajad/fifaa"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/177.png" alt="FIFAA"></a>
+                </li>
+                                <li>
+                    <a href="/teine-rida/toetajad/taisto"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/179.jpg" alt="Taisto"></a>
+                </li>
+                                <li>
+                    <a href="/teine-rida/toetajad/myfitness"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/175.jpg" alt="MyFitness"></a>
+                </li>
+                                <li>
+                    <a href="/teine-rida/toetajad/krausberg"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/02/80/28022.png" alt="Krausberg"></a>
+                </li>
+                            </ul>
+        </div>
+                                <div class="list">
+            <p class="title">Lennupartner</p>
+            <ul>
+                                <li>
+                    <a href="/teine-rida/lennupartner/nordica"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/171.png" alt="Nordica"></a>
+                </li>
+                            </ul>
+        </div>
+                    </div>
+        <div class="row">
+                        <div class="list">
+            <p class="title">Meediapartnerid</p>
+            <ul>
+                                <li>
+                    <a href="/kolmas-rida/meediapartnerid/err"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/181.png" alt="ERR"></a>
+                </li>
+                                <li>
+                    <a href="/kolmas-rida/meediapartnerid/ohtuleht"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/182.png" alt="Õhtuleht"></a>
+                </li>
+                                <li>
+                    <a href="/kolmas-rida/meediapartnerid/"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/02/32/23224.png" alt="Soccernet"></a>
+                </li>
+                                <li>
+                    <a href="/kolmas-rida/meediapartnerid/jalka"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/03/09/30906.png" alt="JALKA"></a>
+                </li>
+                            </ul>
+        </div>
+                                <div class="list">
+            <p class="title">Partnerid</p>
+            <ul>
+                                <li>
+                    <a href="/kolmas-rida/partnerid/uefa"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/183.png" alt="UEFA"></a>
+                </li>
+                                <li>
+                    <a href="/kolmas-rida/partnerid/fifa"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/184.png" alt="FIFA"></a>
+                </li>
+                                <li>
+                    <a href="/kolmas-rida/partnerid/kultuuriministeerium"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/185.png" alt="Kultuuriministeerium"></a>
+                </li>
+                                <li>
+                    <a href="/kolmas-rida/partnerid/eok"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/186.png" alt="EOK"></a>
+                </li>
+                                <li>
+                    <a href="/kolmas-rida/partnerid/tallinn"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/00/01/187.png" alt="Tallinn"></a>
+                </li>
+                            </ul>
+        </div>
+                                <div class="list">
+            <p class="title">Sotsiaalpartnerid</p>
+            <ul>
+                                <li>
+                    <a href="/kolmas-rida/sotsiaalpartnerid/spin"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/02/50/25028.png" alt="SPIN"></a>
+                </li>
+                                <li>
+                    <a href="/kolmas-rida/sotsiaalpartnerid/sos-lastekula"><img src="http://jalgpall.ee/content/sponsor/sponsor_logo/02/50/25029.jpg" alt="SOS Lasteküla"></a>
+                </li>
+                            </ul>
+        </div>
+                    </div>
+    </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <footer id="footer">
+        <div class="top">
+        <nav id="footermenu">
+            <ul>
+                                <li>EJL
+                    <ul>
+                                                <li><a href="/eesti-jalgpalli-liit/Kontakt">Kontakt</a></li>
+                                            </ul>
+                </li>
+                            </ul>
+        </nav>
+    </div>
+            <div class="bottom">
+        <p>Kőik őigused kaitstud © 2008-2018 Eesti Jalgpalli Liit</p>
+    </div>
+    </footer>
+
+<script src="/scripts/externals/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/style/jquery-eu-cookie-law-popup.css"/>

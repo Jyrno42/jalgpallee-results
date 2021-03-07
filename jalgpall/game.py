@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+import datetime
+import re
+
+import pytz
 import requests
 import typing
 
@@ -10,7 +14,7 @@ class GoalEventData(typing.NamedTuple):
 
 
 class SwitchEventData(typing.NamedTuple):
-    off_player_nr: bool
+    off_player_nr: int
 
 
 class CardEventData(typing.NamedTuple):
@@ -52,8 +56,10 @@ class Team(typing.NamedTuple):
 
 
 class GameInfo(typing.NamedTuple):
-    home_team: str
-    away_team: str
+    home_team: Team
+    away_team: Team
+
+    kick_off: typing.Optional[datetime.datetime]
 
     official: bool
 
@@ -64,6 +70,7 @@ class GameInfo(typing.NamedTuple):
     away_halftime_score: typing.Optional[typing.Union[int, str]]
 
     location: str
+    referee: str
 
     attendance: typing.Optional[int]
 
@@ -73,10 +80,11 @@ class GameInfo(typing.NamedTuple):
 special_scores = ["+", "-", ""]
 
 
-def get_score(score_node, allow_none=False):
-    home_score = None
-    away_score = None
-
+def get_score(
+    score_node, allow_none=False
+) -> typing.Tuple[
+    typing.Optional[typing.Union[int, str]], typing.Optional[typing.Union[int, str]]
+]:
     score_node = score_node[0] if score_node and isinstance(score_node, list) else None
     score_node = score_node.parent if score_node else None
 
@@ -119,6 +127,39 @@ def get_attendance(soup: BeautifulSoup) -> typing.Optional[int]:
 
     try:
         return int(attendance)
+
+    except (TypeError, ValueError):
+        return None
+
+
+def get_referee(soup: BeautifulSoup) -> str:
+    ref_node = soup.find("p", text=re.compile("Kohtunik"))
+
+    if not ref_node:
+        return ""
+
+    referee = ref_node.parent.get_text().replace("Kohtunik", "").strip()
+
+    try:
+        return referee
+
+    except (TypeError, ValueError):
+        return ""
+
+
+def get_kick_off(soup: BeautifulSoup) -> typing.Optional[datetime.datetime]:
+    node = soup.find("li", class_="date")
+
+    if not node:
+        return None
+
+    timestamp = node.get_text().replace("kell", "T").strip()
+    timestamp = timestamp.replace(" ", "")
+
+    try:
+        return datetime.datetime.strptime(timestamp, "%d.%m.%YT%H:%M").replace(
+            tzinfo=pytz.timezone("Europe/Tallinn")
+        )
 
     except (TypeError, ValueError):
         return None
@@ -271,7 +312,7 @@ def get_events(
     return events
 
 
-def get_game_info(game_id: int):
+def get_game_info(game_id: int) -> GameInfo:
     game_url = f"http://jalgpall.ee/voistlused/protocol/{game_id}"
 
     response = requests.get(game_url)
@@ -361,6 +402,8 @@ def get_game_info(game_id: int):
         away_team=away_team,
         location=location,
         attendance=get_attendance(soup),
+        kick_off=get_kick_off(soup),
+        referee=get_referee(soup),
         official=soup.find(text="Mitteametlik") is None,
         events=events,
     )
