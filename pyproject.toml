@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "jalgpall_api"
+name = "jalgpall"
 version = "0.1.0"
 description = ""
 authors = ["Jyrno Ader <jyrno42@gmail.com>"]
