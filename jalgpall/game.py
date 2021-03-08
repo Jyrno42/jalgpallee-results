@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 class GoalEventData(typing.NamedTuple):
     penalty: bool
+    is_own_goal: bool
 
 
 class SwitchEventData(typing.NamedTuple):
@@ -26,7 +27,7 @@ class CardEventData(typing.NamedTuple):
 class Event(typing.NamedTuple):
     time: int
     overtime_offset: typing.Optional[int]
-    event_type: str  # goal | own_goal | penalty_miss | switch | card
+    event_type: str  # goal | penalty_miss | switch | card
     team: str  # home | away
     player_nr: int
 
@@ -282,11 +283,11 @@ def get_events(
         event_type = ""
         event_data = None
 
-        if is_goal:
+        if is_goal or is_own_goal:
             event_type = "goal"
-            event_data = GoalEventData(penalty=is_success_penalty)
-        elif is_own_goal:
-            event_type = "own_goal"
+            event_data = GoalEventData(
+                penalty=is_success_penalty, is_own_goal=is_own_goal
+            )
         elif is_failed_penalty:
             event_type = "penalty_miss"
         elif is_substitution:
