@@ -9,7 +9,7 @@ from jalgpall import get_game_info, GoalEventData, CardEventData, Player
 
 expected_events = [
     {
-        "event_data": GoalEventData(penalty=False),
+        "event_data": GoalEventData(penalty=False, is_own_goal=False),
         "event_type": "goal",
         "overtime_offset": None,
         "player_nr": 27,
@@ -41,7 +41,7 @@ expected_events = [
         "time": 34,
     },
     {
-        "event_data": GoalEventData(penalty=False),
+        "event_data": GoalEventData(penalty=False, is_own_goal=False),
         "event_type": "goal",
         "overtime_offset": None,
         "player_nr": 34,
